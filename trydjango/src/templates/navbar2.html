@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Navbar</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            z-index: 1000;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        .navbar-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-link {
+            margin: 0 15px;
+            position: relative;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-option {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-option:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="navbar-brand">Your Logo</a>
+    <ul class="navbar-links">
+        <li class="navbar-link" onclick="toggleDropdown('option1')">Option 1
+            <div class="dropdown-content" id="option1">
+                <a href="#" class="dropdown-option">Default Option 1</a>
+                <a href="#" class="dropdown-option">Default Option 2</a>
+                <a href="#" class="dropdown-option">Default Option 3</a>
+                <a href="#" class="dropdown-option">Default Option 4</a>
+                <a href="#" class="dropdown-option">Default Option 5</a>
+            </div>
+        </li>
+        <li class="navbar-link" onclick="toggleDropdown('option2')">Option 2
+            <div class="dropdown-content" id="option2">
+                <a href="#" class="dropdown-option">Default Option 1</a>
+                <a href="#" class="dropdown-option">Default Option 2</a>
+                <a href="#" class="dropdown-option">Default Option 3</a>
+                <a href="#" class="dropdown-option">Default Option 4</a>
+                <a href="#" class="dropdown-option">Default Option 5</a>
+            </div>
+        </li>
+        <li class="navbar-link" onclick="toggleDropdown('option3')">Option 3
+            <div class="dropdown-content" id="option3">
+                <a href="#" class="dropdown-option">Default Option 1</a>
+                <a href="#" class="dropdown-option">Default Option 2</a>
+                <a href="#" class="dropdown-option">Default Option 3</a>
+                <a href="#" class="dropdown-option">Default Option 4</a>
+                <a href="#" class="dropdown-option">Default Option 5</a>
+            </div>
+        </li>
+        <li class="navbar-link" onclick="toggleDropdown('option4')">Option 4
+            <div class="dropdown-content" id="option4">
+                <a href="#" class="dropdown-option">Default Option 1</a>
+                <a href="#" class="dropdown-option">Default Option 2</a>
+                <a href="#" class="dropdown-option">Default Option 3</a>
+                <a href="#" class="dropdown-option">Default Option 4</a>
+                <a href="#" class="dropdown-option">Default Option 5</a>
+            </div>
+        </li>
+        <li class="navbar-link" onclick="toggleDropdown('option5')">Option 5
+            <div class="dropdown-content" id="option5">
+                <a href="#" class="dropdown-option">Default Option 1</a>
+                <a href="#" class="dropdown-option">Default Option 2</a>
+                <a href="#" class="dropdown-option">Default Option 3</a>
+                <a href="#" class="dropdown-option">Default Option 4</a>
+                <a href="#" class="dropdown-option">Default Option 5</a>
+            </div>
+        </li>
+        <li class="navbar-link" onclick="toggleDropdown('refOptions')">Ref <a> Options
+            <div class="dropdown-content" id="refOptions">
+                <a href="#" class="dropdown-option">Reference Option 1</a>
+                <a href="#" class="dropdown-option">Reference Option 2</a>
+                <a href="#" class="dropdown-option">Reference Option 3</a>
+                <a href="#" class="dropdown-option">Reference Option 4</a>
+                <a href="#" class="dropdown-option">Reference Option 5</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<script>
+    function toggleDropdown(optionId) {
+        var dropdown = document.getElementById(optionId);
+        var dropdowns = document.querySelectorAll('.dropdown-content');
+        dropdowns.forEach(function (item) {
+            if (item !== dropdown && item.style.display === 'block') {
+                item.style.display = 'none';
+            }
+        });
+        dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+    }
+
+    window.onclick = function (event) {
+        if (!event.target.matches('.navbar-link')) {
+            var dropdowns = document.querySelectorAll('.dropdown-content');
+            dropdowns.forEach(function (item) {
+                item.style.display = 'none';
+            });
+        }
+    };
+</script>
+
+</body>
+</html>

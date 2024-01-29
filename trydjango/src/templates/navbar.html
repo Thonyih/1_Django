@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation bar</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            /* margin-top: 60px; */
+        }
+
+        nav {
+            background-color: #004f6d;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            display: flex;   
+            justify-content: flex-start;  
+            z-index: 1000;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);  
+        }
+
+        .navLogo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+            font-size: 20px;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s ease;
+        }
+        .navLogo:hover {
+            transform: scale(1.2);
+        }
+
+        .navBarLinks {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .linkItem {
+            height: 20px;
+            margin: 0 15px;
+            position: relative;
+            cursor: pointer;
+            font-size: 18px;
+            background-color: #95c126; /* Background color for the box */
+            color: #ffffff;
+            padding: 10px 15px; /* Adjust padding as needed */
+            border-radius: 5px; /* Optional: Add rounded corners to the box */
+            /* border: 1px solid #ddd; Optional: Add a border to the box */
+            transition: background-color 0.2s;
+            border-radius: 100px;
+        }
+        .linkItem:hover {
+            background-color: #618603;
+        }
+
+        .dropContent {
+            padding-top: 15px;
+            display: none;
+            position: absolute;
+            z-index: 1;
+            transition: opacity 0.2s ease-in-out;
+            border: none;
+
+        }
+        
+        .drop-option{
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding-top: 10px;
+            transition: background-color 0.2s;
+            transition: transform 0.2s ease;
+            background-color: #6fcde4;
+            border: none;
+            border-radius: 10px;
+            height: 50px;
+            width: 100px;
+            margin-top: 5px;
+        }
+        .drop-option:hover {
+            transform: scale(1.1);
+            background-color: #367787;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+
+        .drop-option-a {
+        display: block;
+        font-size: 15px;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 15px; /* Adjust padding as needed */
+        transition: background-color 0.2s, transform 0.2s ease;
+        background-color: #6fcde4;
+        border: none;
+        border-radius: 10px;
+        height: 50px;
+        width: 90%;
+        margin-top: 5px;
+        box-sizing: border-box; /* Include padding in total width/height */
+        }
+
+        .drop-option-a:hover {
+            transform: scale(1.1);
+            background-color: #367787;
+            cursor: pointer;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+<nav>
+    <a href="{% url 'home' %}" class="navLogo" > 🏠 <br>Home</a>
+    <ul class="navBarLinks">
+
+        <li class="linkItem" onclick="toggleDropContent('Opc1')"> Páginas
+            <div class="dropContent" id="Opc1">   
+
+                <a class="drop-option-a" style="text-decoration: none; color:inherit;" href="{% url 'about' %}"> About </a>
+                <a class="drop-option-a" style="text-decoration: none; color:inherit;" href="{% url 'hometest' %}">Hometest </a>
+                <a class="drop-option-a" style="text-decoration: none; color:inherit;" href="{% url 'basehtml' %}">Basehtml </a>
+
+                <a class="drop-option-a" style="text-decoration: none; color:inherit;" href="{% url 'productlist' %}"> ProductView </a>
+
+                <a class="drop-option-a" style="text-decoration: none; color:inherit;" href="{% url 'productCreate' %}">ProductCreate </a>
+                <a class="drop-option-a" style="text-decoration: none; color:inherit;" href="{% url 'detail' %}">Detail </a>
+                <a class="drop-option-a" style="text-decoration: none; color:inherit;" href="{% url 'contact' %}">Contact </a>
+                
+            </div>
+        </li>
+
+        <li class="linkItem" onclick="toggleDropContent('Opc2')"> Item 1
+            <div class="dropContent" id="Opc2">   
+                <button class="drop-option"> Default  1 </button>
+                <button class="drop-option"> Default  2 </button>
+                <button class="drop-option"> Default  3 </button>
+                <button class="drop-option"> Default  4 </button>
+                <button class="drop-option"> Default  5 </button>
+            </div>
+        </li>
+
+        <li class="linkItem" onclick="toggleDropContent('Opc3')"> Item 2
+            <div class="dropContent" id="Opc3">   
+                <button class="drop-option"> Default  1 </button>
+                <button class="drop-option"> Default  2 </button>
+                <button class="drop-option"> Default  3 </button>
+                <button class="drop-option"> Default  4 </button>
+                <button class="drop-option"> Default  5 </button>
+            </div>
+        </li>
+
+        <li class="linkItem" onclick="toggleDropContent('Opc4')"> Item 3
+            <div class="dropContent" id="Opc4">   
+                <button class="drop-option"> Default  1 </button>
+                <button class="drop-option"> Default  2 </button>
+                <button class="drop-option"> Default  3 </button>
+                <button class="drop-option"> Default  4 </button>
+                <button class="drop-option"> Default  5 </button>
+            </div>
+        </li>
+
+    </ul>
+</nav>
+
+<script>
+
+    function toggleDropContent(optionID) {
+
+        var drop1 = document.getElementById(optionID)
+        var dropDown = document.querySelectorAll('.drop-option');
+
+        dropDown.forEach( function (item) {
+            if (item !== drop1 && item.style.display === 'block') {
+                item.style.display = 'none';
+            }
+        });
+        drop1.style.display = (drop1.style.display === 'block') ? 'none' : 'block';
+    }
+
+    window.onclick = function (event) {
+        if (!event.target.matches('.linkItem')) {
+
+            var dropdowns = document.querySelectorAll('.dropContent');
+
+            dropdowns.forEach(function (item) {
+                item.style.display = 'none';
+            } );
+        }
+    }
+
+</script>
+
+
+</body>
+</html>
+

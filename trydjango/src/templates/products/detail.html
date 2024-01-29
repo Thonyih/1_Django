@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>This is a custom header for detail.html</h1> I removed the original header here
+{% endblock header %}
+
+{% block content %}
+    <h1>Title: {{ object.title }}</h1>
+    <h2>Description Sem if: {{ object.description }}</h2>
+
+    <h2>Description with if statement:
+        {% if object.description %} 
+            {{ object.description }} inside the if
+                {% else %} 
+                    No description yet teste
+        {% endif %}</h2>
+    <h2>Price: {{ object.price }} €</h2>
+
+
+    <p>This is the content specific to detail.html.</p>
+
+    {% block bananas %}
+        <h1>This is block bananas in detail.html</h1>
+    {% endblock bananas %}
+
+{% endblock content %}
+
+{% block footer %}
+    <p>Custom footer for detail.html.</p>
+{% endblock footer %}

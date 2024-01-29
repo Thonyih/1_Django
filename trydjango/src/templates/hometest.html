@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> Hello world from hometest.html </h1>
+
+<h3>{{ my_text|capfirst|title }}</h3>
+
+<p> This is a template from hometest </p>
+
+<p>
+    {{ my_text }} isto é -> my_text <br> {{ my_number }} isto é-> my_number
+</p>
+
+<p>
+    {{ aListInPython }} isto é -> aListInPython
+</p>
+
+<p>
+    <ul>
+        <li>
+            Item 1
+        </li>
+        <li>
+            Item 2
+        </li>
+    </ul>
+</p>
+
+<ul>
+{% for i in aListInPython %}
+    {% if i == 312 %}
+        <li> {{ forloop.counter }} -> {{ i|add:22 }} </li>
+
+    {% elif i == "abc" %}
+        <li> {{ forloop.counter }} -> {{ i|add:" bananas" }} </li>
+        Uma frase dentro do for loop
+
+    {% else %}
+        <li> {{ forloop.counter }} -> {{ i }} </li>
+
+    {% endif %}
+{% endfor %}
+</ul>
+
+
+{% endblock content %}

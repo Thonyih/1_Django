@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    
+    body {
+      margin: 0;
+      padding-top: 60px;
+      font-family: Verdana, sans-serif;
+      background-color: rgb(196, 196, 196);
+      color: #fff;
+      display: flex;
+    }
+
+    #menu {
+      width: 290px;
+      background: #79c000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      box-shadow: 20px 0 40px rgba(0, 0, 0, 0.2);
+      /* z-index: 2; */
+    }
+
+    .menu-item {
+      cursor: pointer;
+      margin-bottom: 0px;
+      font-size: 18px; /* Increased font size */
+      transition: all 0.3s ease; /* Added transition for animation */
+      display: flex; /* Make the entire menu item a flex container */
+      align-items: center; /* Center items vertically within the container */
+      padding: 15px 10px; /* Add padding to create a clickable area */
+      border-radius: 5px; /* Add border-radius for a button-like appearance */
+      width: 100%; /* Set the width to 100% */
+      justify-content: center;
+    }
+
+    .menu-item:hover {
+      background-color: #3367d6; /* Darker color on hover */
+      color: #fff; /* Change text color on hover for better visibility */
+      transform: scale(1.05); /* Added hover effect for scaling */
+    }
+
+    #form-container {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .form {
+      display: none;
+    }
+
+    /* Styling for the form */
+    .form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .form label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .form input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    .form button {
+      background-color: #79c000;
+      color: #fff;
+      padding: 15px; /* Increased padding */
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease; /* Added transition for animation */
+    }
+
+    .form button:hover {
+      background-color: #3367d6; /* Darker color on hover */
+    }
+  </style>
+  <title>HOME HTML MENU</title>
+</head>
+
+<body>
+  {% include 'navbar.html' %}
+ 
+  <div id="menu">
+    <div class="menu-item" onclick="showForm('form1')">Item 1</div>
+    <div class="menu-item" onclick="showForm('form2')">Item 2</div>
+    <div class="menu-item" onclick="showForm('form3')">Item 3</div>
+    <div class="menu-item" onclick="showForm('form3')">Item 4</div>
+    <div class="menu-item" onclick="showForm('form3')">Item 5</div>
+    <div class="menu-item" onclick="showForm('form3')">Item 6</div>
+    <div class="menu-item" onclick="showForm('form3')">Item 7</div>
+    <div class="menu-item" onclick="showForm('form3')">Item 8</div>
+    <div class="menu-item" onclick="showForm('form3')">Item 9</div>
+    <div class="menu-item" onclick="showForm('form3')">Item 0</div>
+  </div>
+
+  <!-- Form Container -->
+  <div id="form-container">
+    <!-- Form 1 -->
+    <div class="form" id="form1">
+      <h2>Form 1</h2>
+      <form>
+        <label for="field1">Field 1:</label>
+        <input type="text" id="field1" name="field1">
+        <label for="field2">Field 2:</label>
+        <input type="text" id="field2" name="field2">
+        <button type="button">Submit</button>
+      </form>
+    </div>
+
+    <!-- Form 2 -->
+    <div class="form" id="form2">
+      <h2>Form 2</h2>
+      <form>
+        <label for="field3">Field 3:</label>
+        <input type="text" id="field3" name="field3">
+        <label for="field4">Field 4:</label>
+        <input type="text" id="field4" name="field4">
+        <button type="button">Submit</button>
+      </form>
+    </div>
+
+    <!-- Form 3 -->
+    <div class="form" id="form3">
+      <h2>Form 3</h2>
+      <form>
+        <label for="field5">Field 5:</label>
+        <input type="text" id="field5" name="field5">
+        <label for="field6">Field 6:</label>
+        <input type="text" id="field6" name="field6">
+        <button type="button">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function showForm(formId) {
+      // Hide all forms
+      var forms = document.getElementsByClassName('form');
+      for (var i = 0; i < forms.length; i++) {
+        forms[i].style.display = 'none';
+      }
+
+      // Show the selected form
+      document.getElementById(formId).style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>

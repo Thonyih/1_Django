@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Um exemplo de uma API </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        
+        body {
+            padding-top: 90px;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            background-color: #ddd;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        select, input, button {
+            margin-right: 10px;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        select, input {
+            width: 150px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+            padding: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        li:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+    </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <h1 class="animate__animated animate__fadeInUp">Example of API</h1>
+
+    <div id="controls" class="animate__animated animate__fadeIn">
+
+        <div>
+            <label for="userId">User ID:</label>
+            <input type="number" id="userId" min="1">
+        </div>
+
+        <div>
+            <label for="sort">Sort by:</label>
+            <select id="sort">
+                <option value="title">Title</option>
+                <option value="body">Body</option>
+            </select>
+        </div>
+        <button onclick="getData()">Get Data from API</button>
+    </div>
+
+    <div id="result" class="animate__animated animate__fadeIn">
+        <!-- Result will be displayed here -->
+    </div>
+
+    <script>
+        function getData() {
+            // The rest of the JavaScript code remains the same
+            // ...
+        }
+
+        function displayResult(data) {
+            const resultContainer = document.getElementById('result');
+            const listItems = data.map(item => `<li>${item.title}</li>`).join('');
+            resultContainer.innerHTML = `<h2 class="animate__animated animate__fadeIn">API Result:</h2>
+                                         <ul>${listItems}</ul>`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form action="." method="POST"> {% csrf_token %} 
+    <h2>Do you want to delete the product "{{ object.title }}"?</h2>
+
+    <h1>Title: {{ object.title }} </h1>
+    <p>Description: {{ object.description }} </p>
+    <p>Price: {{ object.price }} </p>
+
+    <p>
+        <input type="submit" value="Yes" /> 
+        <button>
+        <a style="text-decoration: none;" href="../../"> Cancel </a>
+        </button>
+    </p>
+</form>
+
+
+{% endblock content %}
