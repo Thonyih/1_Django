@@ -51,7 +51,7 @@ def basehtml(request, *args, **kwargs):
 # OR I CAN VIEW THEM IN THE def product_list_view(request):
 def product_create_view(request):
 
-    form= ProductForm(request.POST or None)
+    form = ProductForm(request.POST or None)
     if form.is_valid():
         form.save()
         form = ProductForm()
@@ -91,7 +91,7 @@ def product_delete_view(request, my_id):
     if request.method == "POST":
         # confirming the delete
         obj.delete()
-        return redirect('../../productlist')
+        return redirect('productlist')
 
     context ={
         "object": obj

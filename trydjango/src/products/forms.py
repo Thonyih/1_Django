@@ -32,7 +32,7 @@ class ProductForm(forms.ModelForm):
 class RawProductForm(forms.Form):
     title = forms.CharField(widget=forms.TextInput(
                                     attrs={
-                                            "placeholder": "a title here"
+                                            "placeholder": "aaaa title here"
                                         }
                                     )
                                     )

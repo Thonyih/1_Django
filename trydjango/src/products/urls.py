@@ -10,10 +10,10 @@ from .views import (homepage_view, contact_view, about, hometest,
 
 urlpatterns = [
 
-    path('productlist/', product_list_view, name='productlist'),
+    path('', product_list_view, name='productlist'),
 
-    path('productlist/productdetail/<int:my_id>/', product_detail_view, name='productDetail'),
+    path('productdetail/<int:my_id>/', product_detail_view, name='productDetail'),
 
-    path('productlist/productdelete/<int:my_id>/',  product_delete_view, name='productdelete'),
+    path('productdelete/<int:my_id>/',  product_delete_view, name='productdelete'),
 
 ]

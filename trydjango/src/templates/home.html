@@ -88,10 +88,13 @@
   </style>
   <title>HOME HTML MENU</title>
 </head>
+  {% extends 'base.html' %}
 
+  
 <body>
   {% include 'navbar.html' %}
- 
+  
+  {% block content %}
   <div id="menu">
     <div class="menu-item" onclick="showForm('form1')">Item 1</div>
     <div class="menu-item" onclick="showForm('form2')">Item 2</div>
@@ -144,6 +147,7 @@
     </div>
   </div>
 
+  {% endblock content %}
   <script>
     function showForm(formId) {
       // Hide all forms
