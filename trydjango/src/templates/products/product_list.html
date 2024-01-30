@@ -1,71 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product List</title>
 
     <style>
+        /* body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+        } */
 
-        .hov, .hov2 {
-
-        display: flex;
-        align-items: center;
-        font-size: 15px;
-        color: #000;
-        text-decoration: none;
-        padding: 10px 20px; /* Adjust padding as needed */
-        transition: background-color 0.2s, transform 0.2s ease;
-        background-color: #6fcde4;
-        border: none;
-        border-radius: 10px;
-        height: 50px;
-        width: 10%;
-        margin-top: 5px;
-        box-sizing: border-box; /* Include padding in total width/height */
-
+        .header {
+            background-color: #babbc1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .hov:hover, .hov2:hover {
-            transform: scale(1.05);
-            background-color: #367787;
+        button:hover {
+            background-color: #555;
+        }
+
+        .header h2 {
+            margin: 0;
+            padding: 10px;
+            color: #fff;
             cursor: pointer;
         }
 
-        .id-span {
-            margin-right: 10px;
-            font-weight: bold;
-            font-size: 18px
+        .product-container {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px;
         }
+
+        .product-item {
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .label-span {
+            font-weight: bold;
+            font-size: 20px;
+            color: #555;
+        }
+
+        .value-span {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .link-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .consult-link,
+        .delete-link {
+            padding: 10px 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .consult-link {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        .delete-link {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .consult-link:hover{
+            background-color: #347c37;
+        }
+
+        .delete-link:hover {
+            background-color: #c03127;
+        }
+
+        .link-icon {
+            margin-right: 8px;
+        }
+    
     </style>
 
 </head>
+
 <body>
-    
+
     {% extends 'base.html' %}
 
     {% block content %}
-    <div>
-        <div style="background-color: #367787; display: flex;">
-            <button style="cursor: pointer;"onclick="window.location.href='../../productCreate/'">
-                <h2 style="margin: 0; padding: 10px; color: inherit;">
-                    Create a new Product
-                </h2>
+    <div class="product-container">
+        <div class="header">
+            <button style="cursor: pointer; background-color: #333;"onclick="window.location.href='../../productCreate/'">
+                <h2>Create a new Product</h2>
             </button>
         </div>
 
-        <div style="background-color:darkgrey;">
-            <h1>Consult Products</h1>
+        <div>
+            <h1 style="text-align: center; margin: 20px 0;">Consult Products</h1>
             {% for instance in object_list %}
-                    <div style="display: flex; align-items: center;">
-                        
-                        <span class="id-span"> ID: {{ instance.id }} </span> 
-                        Consult:
-                        <a class="hov" style="text-decoration: none; min-width: 100px;"href="{{ instance.get_absolute_url }}">{{ instance.title }} </a> 
-                        Delete:
-                        <a class="hov2" style="text-decoration: none; background-color:crimson; min-width: 100px" href="{{ instance.get_deleteing_url }}">{{ instance.title }} </a>
-                    
-                    </div>
+            <div class="product-item">
+                <span class="label-span">ID:  </span>
+                <span class="value-span">{{ instance.id }}</span>
+                <br>
+                <span class="label-span">Title:  </span>
+                <span class="value-span">{{ instance.title }}</span>
+                <div class="link-container">
+                    <a class="consult-link" href="{{ instance.get_absolute_url }}">
+                        <span class="link-icon"></span> Consult
+                    </a>
+                    <a class="delete-link" href="{{ instance.get_deleteing_url }}">
+                        <span class="link-icon">🗑️</span> Delete
+                    </a>
+                </div>
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -73,49 +138,5 @@
     {% endblock content %}
 
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
