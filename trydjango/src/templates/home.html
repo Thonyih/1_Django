@@ -22,14 +22,52 @@
   
   {% block content %}
 
-  <svg id="sunburst-chart">svg here</svg>
+  <svg id="sunburst-chart" width="800" height="800"></svg>
   {{ sunburst_data }}
-  {% endblock content %}
 
 
 <script src="https://d3js.org/d3.v6.min.js"> </script>
 <script>
   console.log("I AM HERE")
+
+  // LADO ROXO
+  const sunburstData = {
+      name: "Root",
+      children: [
+        {
+
+          name: "Child1",
+          children: [
+            {
+              name: "Subchild1",
+              children: [
+                { name: "LARANJAS2", value: 25 },
+                { name: "LARANJAS2", value: 30 }
+              ]
+            },
+            { name: "CABAZ", value: 35 }
+          ]
+        },
+
+
+
+
+        // LADO VERDE
+        {
+          name: "Child2",
+          children: [
+            {
+              name: "Subchild3",
+              children: [
+                { name: "Subsubchild3", value: 25 },
+                { name: "Subsubchild4", value: 30 }
+              ]
+            },
+            { name: "Subchild4", value: 35 }
+          ]
+        }
+      ]
+    };
 
   function createSunburstChart(data) {
     console.log("Creating sunburst chart with data:", data);
@@ -157,11 +195,11 @@
     return svg.node();
   }
   console.log("Scripts is running...")
-  const sunburstData = JSON.parse('{{ sunburst_data|escapejs }}');
-  console.log("SUNBURST DATA SHOULD BE:", sunburstData);
+  // const sunburstData = JSON.parse('{{ sunburst_data|escapejs }}');
+  // console.log("SUNBURST DATA SHOULD BE:", sunburstData);
   createSunburstChart(sunburstData);
 </script>
 
-
+{% endblock content %}
 </body>
 </html>
