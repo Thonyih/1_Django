@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 from django.http import HttpResponse, Http404
-from .models import Product
+from .models import Product, SunburstData
 from .forms import ProductForm, RawProductForm
 
 
@@ -10,10 +10,19 @@ def homepage_view(request, *args, **kwargs):
     # print(args, kwargs)
     # print(request.user)
 
-    products = Product.objects.all()
+    # products = Product.objects.all()
+    # context = {
+    #     'products': products,
+    # }
+
+    sunburst_data = SunburstData.objects.all().values() #Gets all the data from database
+
     context = {
-        'products': products,
+        'sunburst_data': list(sunburst_data),
     }
+
+    print(list(sunburst_data))
+
     return render(request, "home.html", context)
 
 

@@ -15,6 +15,7 @@ class ProductForm(forms.ModelForm):
         fields = [
             'title',
             'description',
+            'summary',
             'price',
         ]
     

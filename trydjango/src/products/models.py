@@ -17,3 +17,18 @@ class Product(models.Model):
         # return (f"/productdelete/{self.id}") I just did same here
         return reverse("productdelete", kwargs={"my_id": self.id})
 
+
+
+class Client(models.Model):
+    client_name    = models.CharField(max_length=120)
+    client_wallet  = models.DecimalField(max_digits=1000, decimal_places=2)
+
+
+
+class SunburstData(models.Model):
+    name = models.CharField(max_length=255)
+    value = models.IntegerField(default=0)
+    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
