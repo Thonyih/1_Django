@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from models import Article
+from .models import Article
 
 from django.views.generic import (
     CreateView,
@@ -13,6 +13,9 @@ from django.views.generic import (
 
 # Create your views here.
 
-# class ArticleListView(ListView):
-#     queryset
+class ArticleListView(ListView):
+
+    template_name= 'articles/article_list.html'
+
+    queryset = Article.objects.all()
 
