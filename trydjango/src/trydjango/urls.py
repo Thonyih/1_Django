@@ -31,6 +31,7 @@ from products.views import product_detailhtml, product_detail_view, product_dele
 urlpatterns = [ 
 
     path('productlist/', include('products.urls')), #Incluir imports novos que criei  
+    path('blog/', include('blog.urls')),
 
     path('', homepage_view, name='home'),
     path('contact/', contact_view, name='contact'),

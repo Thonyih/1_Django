@@ -6,7 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>   
-    
+    .containe {
+
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      border: 5px solid black;
+     
+    }
+
+    .sunburst {
+      border: 5px solid black;
+      height: 650px;
+      width: 650px;
+      margin-bottom: 20px;
+    }
+
+    .sunburst text {
+      font-size: 20px;
+    }
+
+    .test-data {
+      border: 5px solid black;
+    }
+
   </style>
 
   
@@ -21,15 +44,136 @@
   {% include 'navbar.html' %}
   
   {% block content %}
+  <div class="containe">
 
-  <svg id="sunburst-chart">svg here</svg>
-  {{ sunburst_data }}
-  {% endblock content %}
+    <div class="sunburst">
+
+      <svg id="sunburst-chart" ></svg>
+
+    </div>
+
+
+    <div class="test-data" style="">
+
+      {{ sunburst_data }}
+
+    </div>
+
+  </div>
+
+  
 
 
 <script src="https://d3js.org/d3.v6.min.js"> </script>
+
 <script>
   console.log("I AM HERE")
+
+  const sunburstData = {
+
+
+    "name": "root", 
+    "children": [
+
+    // ##############################################
+      {
+        "name": "A", "value": 20,
+        "children": [
+        {
+          "name": "A - 2nd nivel", "value": 20
+        }
+      ]
+    }, 
+
+    // ##############################################
+      {
+        "name": "B", "value": 30,
+        "children": [
+          {
+            "name": "B - 2nd nivel", "value": 20
+          },
+          {
+            "name": "BB", "value": 10
+          }
+        ]  
+      },
+
+    // ##############################################
+    {
+        "name": "C", // This one does not have a value, just for testing
+        "children": [
+          {
+            "name": "C - 2nd nivel", "value": 30, "children": [
+              {
+                "name": "CC - 3rd nivel", "value": 5
+              },
+              {
+                "name": "CC - 3rd nivel", "value": 5
+              },
+              {
+                "name": "CC - 3rd nivel", "value": 5
+              },
+              {
+                "name": "CC - 3rd nivel", "value": 5
+              },
+              {
+                "name": "CC - 3rd nivel", "value": 5
+              },
+              {
+                "name": "CC - 3rd nivel", "value": 5
+              }
+            ]
+          },
+          {
+            "name": "C2 - 2nd nivel", "value": 5
+          },
+          {
+            "name": "C3 - 2nd nivel", "value": 5
+          },
+          {
+            "name": "C4 - 2nd nivel", "value": 5
+          },
+          {
+            "name": "C5 - 2nd nivel", "value": 5
+          },
+          {
+            "name": "C6 - 2nd nivel", "value": 5
+          },
+          {
+            "name": "C7 - 2nd nivel", "value": 5
+          }
+        ]
+      },
+
+    // ##############################################
+    {
+        "name": "D", // This one does not have a value, just for testing
+        "children": [
+          {
+            "name": "D - 2nd nivel", // This one does not have a value, just for testing
+            "children": [
+              {
+                "name": "DD - 3rd nivel - No value", "value": 10
+              }
+            ]
+          },
+
+          {
+            "name": "D2 - 2nd nivel", "value": 40,
+            "children": [
+              {
+                "name": "DD2 - 3rd nivel", "value": 10
+              }
+            ]
+          }
+
+
+        ]
+      },
+    ],
+
+  };
+  // const sunburstData = JSON.parse(sampleData);  
 
   function createSunburstChart(data) {
     console.log("Creating sunburst chart with data:", data);
@@ -156,12 +300,17 @@
   
     return svg.node();
   }
-  console.log("Scripts is running...")
-  const sunburstData = JSON.parse('{{ sunburst_data|escapejs }}');
+  // console.log("Raw JSON data:", '{{ sunburst_data|safe }}');
+  // const sunburstData = JSON.parse('{{ sunburst_data }}');
+
+  // console.log("SUNBURST DATA SHOULD BE:", sunburstData);
   console.log("SUNBURST DATA SHOULD BE:", sunburstData);
+
+  
   createSunburstChart(sunburstData);
 </script>
 
+{% endblock content %}
 
 </body>
 </html>
