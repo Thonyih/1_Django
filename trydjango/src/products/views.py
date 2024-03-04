@@ -10,16 +10,39 @@ def homepage_view(request, *args, **kwargs):
     # print(args, kwargs)
     # print(request.user)
 
-    # products = Product.objects.all()
+    # products = Product.objects.all() first version of this code
     # context = {
     #     'products': products,
     # }
 
-    sunburst_data = SunburstData.objects.all().values() #Gets all the data from database
+    sunburst_data = SunburstData.objects.all() #Gets all the data from database
+    nodes_by_parent = {None: []}
 
+    for node in sunburst_data:
+        if node.parent_id not in nodes_by_parent:
+            nodes_by_parent[node.parent_id] = []
+        nodes_by_parent[node.parent_id].append(node)
+
+    def build_hierarchy(node):
+        children = nodes_by_parent.get(node.id, [])
+        node_structure = {
+            'name': node.name,
+            'value': node.value
+        }
+        if children:
+            node_structure['children'] = [build_hierarchy(child) for child in children]
+        return node_structure
+    
+    root_nodes = [build_hierarchy(node) for node in nodes_by_parent[None]]
+
+    sunburst_data = {'name': 'root', 'children': root_nodes} if len(root_nodes) > 1 else root_nodes[0]
     context = {
-        'sunburst_data': list(sunburst_data),
+        'sunburst_data': sunburst_data
     }
+
+    # context = {
+    #     'sunburst_data': list(sunburst_data),
+    # }
 
     print(list(sunburst_data))
 

@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,6 +45,14 @@
   {% include 'navbar.html' %}
   
   {% block content %}
+
+  {% load static %}
+  {% load i18n %}
+
+
+  {{ sunburst_data|json_script:"sunburst-data-id" }}
+
+
   <div class="containe">
 
     <div class="sunburst">
@@ -69,110 +78,120 @@
 <script>
   console.log("I AM HERE")
 
-  const sunburstData = {
+  // const sunburstData = {
+
+  //   "name": "root",
+  //   "children": [
+  //     { "name": "A", "value":20 },
+  //     { "name": "B", "value":20 },
+  //     { "name": "C", "value":20 },
+  //     { "name": "D", "value":20 },
+  //     { "name": "E", "value":20 },
+  //     { "name": "F", "value":20 },
+  //   ],
 
 
-    "name": "root", 
-    "children": [
+  //   "name": "root", 
+  //   "children": [
 
-    // ##############################################
-      {
-        "name": "A", "value": 20,
-        "children": [
-        {
-          "name": "A - 2nd nivel", "value": 20
-        }
-      ]
-    }, 
+  //   // ##############################################
+  //     {
+  //       "name": "A", "value": 20,
+  //       "children": [
+  //       {
+  //         "name": "A - 2nd nivel", "value": 20
+  //       }
+  //     ]
+  //   }, 
 
-    // ##############################################
-      {
-        "name": "B", "value": 30,
-        "children": [
-          {
-            "name": "B - 2nd nivel", "value": 20
-          },
-          {
-            "name": "BB", "value": 10
-          }
-        ]  
-      },
+  //   // ##############################################
+  //     {
+  //       "name": "B", "value": 30,
+  //       "children": [
+  //         {
+  //           "name": "B - 2nd nivel", "value": 20
+  //         },
+  //         {
+  //           "name": "BB", "value": 10
+  //         }
+  //       ]  
+  //     },
 
-    // ##############################################
-    {
-        "name": "C", // This one does not have a value, just for testing
-        "children": [
-          {
-            "name": "C - 2nd nivel", "value": 30, "children": [
-              {
-                "name": "CC - 3rd nivel", "value": 5
-              },
-              {
-                "name": "CC - 3rd nivel", "value": 5
-              },
-              {
-                "name": "CC - 3rd nivel", "value": 5
-              },
-              {
-                "name": "CC - 3rd nivel", "value": 5
-              },
-              {
-                "name": "CC - 3rd nivel", "value": 5
-              },
-              {
-                "name": "CC - 3rd nivel", "value": 5
-              }
-            ]
-          },
-          {
-            "name": "C2 - 2nd nivel", "value": 5
-          },
-          {
-            "name": "C3 - 2nd nivel", "value": 5
-          },
-          {
-            "name": "C4 - 2nd nivel", "value": 5
-          },
-          {
-            "name": "C5 - 2nd nivel", "value": 5
-          },
-          {
-            "name": "C6 - 2nd nivel", "value": 5
-          },
-          {
-            "name": "C7 - 2nd nivel", "value": 5
-          }
-        ]
-      },
+  //   // ##############################################
+  //   {
+  //       "name": "C", // This one does not have a value, just for testing
+  //       "children": [
+  //         {
+  //           "name": "C - 2nd nivel", "value": 30, "children": [
+  //             {
+  //               "name": "CC - 3rd nivel", "value": 5
+  //             },
+  //             {
+  //               "name": "CC - 3rd nivel", "value": 5
+  //             },
+  //             {
+  //               "name": "CC - 3rd nivel", "value": 5
+  //             },
+  //             {
+  //               "name": "CC - 3rd nivel", "value": 5
+  //             },
+  //             {
+  //               "name": "CC - 3rd nivel", "value": 5
+  //             },
+  //             {
+  //               "name": "CC - 3rd nivel", "value": 5
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           "name": "C2 - 2nd nivel", "value": 5
+  //         },
+  //         {
+  //           "name": "C3 - 2nd nivel", "value": 5
+  //         },
+  //         {
+  //           "name": "C4 - 2nd nivel", "value": 5
+  //         },
+  //         {
+  //           "name": "C5 - 2nd nivel", "value": 5
+  //         },
+  //         {
+  //           "name": "C6 - 2nd nivel", "value": 5
+  //         },
+  //         {
+  //           "name": "C7 - 2nd nivel", "value": 5
+  //         }
+  //       ]
+  //     },
 
-    // ##############################################
-    {
-        "name": "D", // This one does not have a value, just for testing
-        "children": [
-          {
-            "name": "D - 2nd nivel", // This one does not have a value, just for testing
-            "children": [
-              {
-                "name": "DD - 3rd nivel - No value", "value": 10
-              }
-            ]
-          },
+  //   // ##############################################
+  //   {
+  //       "name": "D", // This one does not have a value, just for testing
+  //       "children": [
+  //         {
+  //           "name": "D - 2nd nivel", // This one does not have a value, just for testing
+  //           "children": [
+  //             {
+  //               "name": "DD - 3rd nivel - No value", "value": 10
+  //             }
+  //           ]
+  //         },
 
-          {
-            "name": "D2 - 2nd nivel", "value": 40,
-            "children": [
-              {
-                "name": "DD2 - 3rd nivel", "value": 10
-              }
-            ]
-          }
+  //         {
+  //           "name": "D2 - 2nd nivel", "value": 40,
+  //           "children": [
+  //             {
+  //               "name": "DD2 - 3rd nivel", "value": 10
+  //             }
+  //           ]
+  //         }
 
 
-        ]
-      },
-    ],
+  //       ]
+  //     },
+  //   ],
 
-  };
+  // };
   // const sunburstData = JSON.parse(sampleData);  
 
   function createSunburstChart(data) {
@@ -304,10 +323,14 @@
   // const sunburstData = JSON.parse('{{ sunburst_data }}');
 
   // console.log("SUNBURST DATA SHOULD BE:", sunburstData);
-  console.log("SUNBURST DATA SHOULD BE:", sunburstData);
+  // console.log("SUNBURST DATA SHOULD BE:", sunburstData);
 
   
-  createSunburstChart(sunburstData);
+  document.addEventListener('DOMContentLoaded', function() {
+    const sunburstData = JSON.parse(document.getElementById('sunburst-data-id').textContent);
+    createSunburstChart(sunburstData);
+  });
+  // createSunburstChart(sunburstData);
 </script>
 
 {% endblock content %}
