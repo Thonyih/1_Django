@@ -18,7 +18,9 @@ def homepage_view(request, *args, **kwargs):
     sunburst_data = SunburstData.objects.all() #Gets all the data from database
     nodes_by_parent = {None: []}
 
+    
     for node in sunburst_data:
+        print(node.id)
         if node.parent_id not in nodes_by_parent:
             nodes_by_parent[node.parent_id] = []
         nodes_by_parent[node.parent_id].append(node)
@@ -31,6 +33,7 @@ def homepage_view(request, *args, **kwargs):
         }
         if children:
             node_structure['children'] = [build_hierarchy(child) for child in children]
+            # print(node_structure)
         return node_structure
     
     root_nodes = [build_hierarchy(node) for node in nodes_by_parent[None]]

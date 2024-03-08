@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,8 +17,8 @@
 
     .sunburst {
       border: 5px solid black;
-      height: 650px;
-      width: 650px;
+      height: 750px;
+      width: 750px;
       margin-bottom: 20px;
     }
 
@@ -78,120 +77,244 @@
 <script>
   console.log("I AM HERE")
 
-  // const sunburstData = {
 
-  //   "name": "root",
-  //   "children": [
-  //     { "name": "A", "value":20 },
-  //     { "name": "B", "value":20 },
-  //     { "name": "C", "value":20 },
-  //     { "name": "D", "value":20 },
-  //     { "name": "E", "value":20 },
-  //     { "name": "F", "value":20 },
-  //   ],
+    // "name": "root", "children": 
+    // [
+    //   { "name": "C1", "value":0, "children": [
+
+    //     {"name": "GC1", "value":0, "children": [
+    //       {"name": "GGC1", "value":10}
+    //     ]},
+
+    //     {"name": "GC1.2", "value":0, "children": [
+    //       {"name": "GGC1.2.1", "value":10},
+    //       {"name": "GGC1.2.2", "value":10},
+    //       {"name": "GGC1.2.3", "value":10},
+    //       {"name": "GGC1.2.4", "value":10},
+    //     ]},
+
+    //   ]},
+
+    //   { "name": "C2", "value":0, "children": [
+    //     {"name": "GC2", "value": 10, "children": [
+    //       {"name": "GGC2", "value": 10, "children": [
+    //         {"name": "GGGC2", "value": 10}
+    //       ]}
+    //     ]}
+    //   ]},
+    // ]
+
+    const sunburstData = {
+      "name": "root",
+      "children": [
+        {
+          "name": "OK",
+          "children": [
+
+            {
+              "name": "GOCONTACT",
+              "children": [
+                {"name": "pip_0_master_gc_rest", "value": 1}
+              ]
+            },
+            {
+              "name": "MOBILIDADE",
+              "children": [
+                {"name": "pip_appmobilidade_GiraPercurso", "value": 1},
+                {"name": "pip_appmobilidade_mobi", "value": 1},
+                {"name": "pip_trs_appmobilidade", "value": 1}
+              ]
+            },
+            {
+              "name": "MOBILIDADELRG",
+              "children": [
+                {"name": "pip_appmobilidade_lrg", "value": 1}
+              ]
+            },
+            {
+              "name": "BICIPARKS",
+              "children": [
+                {"name": "pip_biciparks", "value": 1}
+              ]
+            },
+            {
+              "name": "BPM",
+              "children": [
+                {"name": "pip_bpm", "value": 1}
+              ]
+            },
+            {
+              "name": "COLETA",
+              "children": [
+                {"name": "pip_coleta", "value": 1}
+              ]
+            },
+            {
+              "name": "CRM",
+              "children": [
+                {"name": "pip_crm", "value": 1}
+              ]
+            },
+            {
+              "name": "CYCLEDATA",
+              "children": [
+                {"name": "pip_cycledata", "value": 1}
+              ]
+            },
+            {
+              "name": "DATAHUB",
+              "children": [
+                {"name": "pip_datahub", "value": 1}
+              ]
+            },
+            {
+              "name": "MPAGAMENTO",
+              "children": [
+                {"name": "pip_easypay", "value": 1},
+                {"name": "pip_paypal", "value": 1},
+                {"name": "pip_viaverde", "value": 1}
+              ]
+            },
+            {
+              "name": "EMELEntity",
+              "children": [
+                {"name": "pip_entity_emel", "value": 1}
+              ]
+            },
+            {
+              "name": "ERP",
+              "children": [
+                {"name": "pip_erp", "value": 1}
+              ]
+            },
+            {
+              "name": "FISCALIZACAO",
+              "children": [
+                {"name": "pip_fiscalizacao", "value": 1}
+              ]
+            },
+            {
+              "name": "GRSSM",
+              "children": [
+                {"name": "pip_grssm_manutencao", "value": 1}
+              ]
+            },
+            {
+              "name": "LOCAL",
+              "children": [
+                {"name": "pip_local", "value": 1}
+              ]
+            },
+            {
+              "name": "MOBILIDADE-LEVE",
+              "children": [
+                {"name": "pip_mobi_e_leve", "value": 1}
+              ]
+            },
+            {
+              "name": "OVP",
+              "children": [
+                {"name": "pip_ovp", "value": 1}
+              ]
+            },
+            {
+              "name": "RH",
+              "children": [
+                {"name": "pip_rh", "value": 1}
+              ]
+            },
+            {
+              "name": "PARQUES",
+              "children": [
+                {"name": "pip_saga_parques", "value": 1}
+              ]
+            },
+            {
+              "name": "TERCEIRIZACAO",
+              "children": [
+                {"name": "pip_terceirizacao", "value": 1}
+              ]
+            },
+            {
+              "name": "DSI",
+              "children": [
+                {"name": "pip_valida_etldtt_max", "value": 1}
+              ]
+            }
+          ]
+        },
 
 
-  //   "name": "root", 
-  //   "children": [
-
-  //   // ##############################################
-  //     {
-  //       "name": "A", "value": 20,
-  //       "children": [
-  //       {
-  //         "name": "A - 2nd nivel", "value": 20
-  //       }
-  //     ]
-  //   }, 
-
-  //   // ##############################################
-  //     {
-  //       "name": "B", "value": 30,
-  //       "children": [
-  //         {
-  //           "name": "B - 2nd nivel", "value": 20
-  //         },
-  //         {
-  //           "name": "BB", "value": 10
-  //         }
-  //       ]  
-  //     },
-
-  //   // ##############################################
-  //   {
-  //       "name": "C", // This one does not have a value, just for testing
-  //       "children": [
-  //         {
-  //           "name": "C - 2nd nivel", "value": 30, "children": [
-  //             {
-  //               "name": "CC - 3rd nivel", "value": 5
-  //             },
-  //             {
-  //               "name": "CC - 3rd nivel", "value": 5
-  //             },
-  //             {
-  //               "name": "CC - 3rd nivel", "value": 5
-  //             },
-  //             {
-  //               "name": "CC - 3rd nivel", "value": 5
-  //             },
-  //             {
-  //               "name": "CC - 3rd nivel", "value": 5
-  //             },
-  //             {
-  //               "name": "CC - 3rd nivel", "value": 5
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           "name": "C2 - 2nd nivel", "value": 5
-  //         },
-  //         {
-  //           "name": "C3 - 2nd nivel", "value": 5
-  //         },
-  //         {
-  //           "name": "C4 - 2nd nivel", "value": 5
-  //         },
-  //         {
-  //           "name": "C5 - 2nd nivel", "value": 5
-  //         },
-  //         {
-  //           "name": "C6 - 2nd nivel", "value": 5
-  //         },
-  //         {
-  //           "name": "C7 - 2nd nivel", "value": 5
-  //         }
-  //       ]
-  //     },
-
-  //   // ##############################################
-  //   {
-  //       "name": "D", // This one does not have a value, just for testing
-  //       "children": [
-  //         {
-  //           "name": "D - 2nd nivel", // This one does not have a value, just for testing
-  //           "children": [
-  //             {
-  //               "name": "DD - 3rd nivel - No value", "value": 10
-  //             }
-  //           ]
-  //         },
-
-  //         {
-  //           "name": "D2 - 2nd nivel", "value": 40,
-  //           "children": [
-  //             {
-  //               "name": "DD2 - 3rd nivel", "value": 10
-  //             }
-  //           ]
-  //         }
+        {
+          "name": "OFF",
+          "children": [
+            {
+              "name": "CASHDRO",
+              "children": [
+                {"name": "pip_cashdro", "value": 1}
+              ]
+            },
+            {
+              "name": "GRSSM",
+              "children": [
+                {"name": "pip_grssm_semaforos", "value": 1}
+              ]
+            },
+            {
+              "name": "OPENWEATHER",
+              "children": [
+                {"name": "pip_openweather", "value": 1}
+              ]
+            },
+            {
+              "name": "DSI-EMELODS",
+              "children": [
+                {"name": "pip_recupera_dados_onprem", "value": 1}
+              ]
+            },
+            {
+              "name": "HELPDESK",
+              "children": [
+                {"name": "pip_sub_freshsrv", "value": 1}
+              ]
+            },
+            {
+              "name": "IPMA",
+              "children": [
+                {"name": "pip_sub_previsao_tempo", "value": 1}
+              ]
+            },
+            {
+              "name": "DSI",
+              "children": [
+                {"name": "pip_trs_waze", "value": 1}
+              ]
+            }
+          ]
+        },
 
 
-  //       ]
-  //     },
-  //   ],
+        {
+          "name": "NotOK",
+          "children": [
+            {
+              "name": "GIRAPOSITIONS",
+              "children": [
+                {"name": "pip_gira_positions_principal_master", "value": 1}
+              ]
+            },
+            {
+              "name": "LIME",
+              "children": [
+                {"name": "pip_lime", "value": 1}
+              ]
+            }
+          ]
+        }
+      ]
+    };
 
-  // };
+  
   // const sunburstData = JSON.parse(sampleData);  
 
   function createSunburstChart(data) {
@@ -202,7 +325,12 @@
     const radius = width / 6;
   
     // Create the color scale.
-    const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
+    // const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
+
+    //### This for case were Ok, NotOK, and OFF are used, please comment below uncomment this ^ to go back ###
+    const color = d3.scaleOrdinal()
+    .domain(["OK", "NotOK", "OFF"])
+    .range(["green", "yellow", "red"]);
   
     // Compute the layout.
     const hierarchy = d3.hierarchy(data)
@@ -222,6 +350,15 @@
         .innerRadius(d => d.y0 * radius)
         .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 1))
   
+    //### SETTING UP TEXT SIZE AJJUSTMENT ###
+    function adjustTextSizeAndAbbreviate(text, d) {
+      const arcLength = (d.x1 - d.x0) * (d.y1 + d.y0) * radius / 2;
+      if (text.length * 7 > arcLength) { // Estimate space needed for text
+          return text.substring(0, Math.max(0, arcLength / 7 - 3)) + '...'; // Abbreviate based on space
+      }
+      return text;
+    }
+
     // Create the SVG container.
     // const svg = d3.create("svg")
     const svg = d3.select("#sunburst-chart")
@@ -233,10 +370,10 @@
       .selectAll("path")
       .data(root.descendants().slice(1))
       .join("path")
+
         .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
         .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
         .attr("pointer-events", d => arcVisible(d.current) ? "auto" : "none")
-  
         .attr("d", d => arc(d.current));
   
     // Make them clickable if they have children.
@@ -248,17 +385,32 @@
     path.append("title")
         .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
   
+    // const label = svg.append("g")
+    //     .attr("pointer-events", "none")
+    //     .attr("text-anchor", "middle")
+    //     .style("user-select", "none")
+    //   .selectAll("text")
+    //   .data(root.descendants().slice(1))
+    //   .join("text")
+    //     .attr("dy", "0.35em")
+    //     .attr("fill-opacity", d => +labelVisible(d.current))
+    //     .attr("transform", d => labelTransform(d.current))
+    //     .text(d => d.data.name);
+
+
+    // ### THIS BIT OF CODE HANDLES THE CASE WERE LETTER OVERLAP ###
     const label = svg.append("g")
-        .attr("pointer-events", "none")
-        .attr("text-anchor", "middle")
-        .style("user-select", "none")
-      .selectAll("text")
-      .data(root.descendants().slice(1))
-      .join("text")
-        .attr("dy", "0.35em")
-        .attr("fill-opacity", d => +labelVisible(d.current))
-        .attr("transform", d => labelTransform(d.current))
-        .text(d => d.data.name);
+      .attr("pointer-events", "none")
+      .attr("text-anchor", "middle")
+      .style("user-select", "none")
+    .selectAll("text")
+    .data(root.descendants().slice(1))
+    .join("text")
+      .attr("dy", "0.35em")
+      .attr("fill-opacity", d => +labelVisible(d.current))
+      .attr("transform", d => labelTransform(d.current))
+      .text(d => adjustTextSizeAndAbbreviate(d.data.name, d)) // Use adjusted text with the same font size
+      .style("font-size", "14px"); // Keep font size consistent
   
     const parent = svg.append("circle")
         .datum(root)
@@ -326,11 +478,11 @@
   // console.log("SUNBURST DATA SHOULD BE:", sunburstData);
 
   
-  document.addEventListener('DOMContentLoaded', function() {
-    const sunburstData = JSON.parse(document.getElementById('sunburst-data-id').textContent);
-    createSunburstChart(sunburstData);
-  });
-  // createSunburstChart(sunburstData);
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   const sunburstData = JSON.parse(document.getElementById('sunburst-data-id').textContent);
+  //   createSunburstChart(sunburstData);
+  // });
+  createSunburstChart(sunburstData);
 </script>
 
 {% endblock content %}

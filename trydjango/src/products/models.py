@@ -28,7 +28,8 @@ class Client(models.Model):
 class SunburstData(models.Model):
     name = models.CharField(max_length=255)
     value = models.IntegerField(default=0)
-    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE) #Being used as foreign key
+    
 
     def __str__(self):
         return self.name
